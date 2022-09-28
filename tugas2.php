@@ -89,32 +89,54 @@
     //gaji kotor
     $gator = $gapok + $tunjab;
     //ternary zakat profesi
-    $zaprof = ($agama == "islam" && $gator = 6000000 )?$gator * 2.5: 0;
+    $zaprof = ($agama == "islam" && $gator = 6000000 )?$gator * 2.5/100: 0;
     //take home pay
     $thp = ($gapok >= 10000000)? 500000 :0 ;
 
     //execute
-    if(isset($tombol)){ ?>
-        <div class="card" style="width: 100%;">
-            <div class="body">
-                <div class=" alert alert-primary p-5" role="alert">
-                    Nama Pegawai: <?= $nama ?>
-                    <br />Agama: <?= $agama ?>
-                    <br />Jabatan: <?= $jabatan ?>
-                    <br />Status: <?=$status ?>
-                    <br />Jumlah Anak: <?= $jumlahAnak ?>
-                    <br />Gaji Pokok: <?= number_format($gapok, 2, ',', '.'); ?>
-                    <br />Tunjangan Jabatan: <?= number_format($tunjab, 2, ',', '.'); ?>
-                    <br />Tunjangan Keluarga: <?= number_format($tunkel, 2, ',', '.'); ?>
-                    <br />Gaji Kotor: <?= number_format($gator, 2, ',', '.'); ?>
-                    <br />Zakat Profesi: <?= number_format($zaprof, 2, ',', '.'); ?>
-                    <br />Take Home Pay: <?= number_format($thp, 2, ',', '.'); ?>
-                </div>
+    if (isset($tombol)) {?>
+            <div class="table-responsive rounded my-5">
+                <table class="table table-bordered mb-2">
+                    <thead>
+                        <tr bgcolor="palegreen">
+                            <th>Nama Pegawai</th>
+                            <th>Jabatan</th>
+                            <th>Agama</th>
+                            <th>Status</th>
+                            <th>Jumlah Anak</th>
+                            <th>Gaji Pokok</th>
+                            <th>Tunjangan Jabatan</th>
+                            <th>Tunjangan Keluarga</th>
+                            <th>Gaji Kotor</th>
+                            <th>Zakat Profesi</th>
+                            <th>Take Home Pay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr bgcolor="mediumspringgreen">
+                            <td><?= $nama; ?> </td>
+                            <td><?= $agama; ?></td>
+                            <td><?= $jabatan; ?></td>
+                            <td><?= $status; ?></td>
+                            <td><?= $jumlahanak; ?></td>
+                            <td><?= 'Rp ',number_format($gapok, 2, ',', '.'); ?></td>
+                            <td><?= 'Rp ',number_format($tunkel, 2, ',', '.'); ?></td>
+                            <td><?= 'Rp ',number_format($tunjab, 2, ',', '.'); ?></td>
+                            <td><?= 'Rp ',number_format($gator, 2, ',', '.'); ?></td>
+                            <td><?= 'Rp ',number_format($zaprof, 2, ',', '.'); ?></td>
+                            <td><?= 'Rp ',number_format($thp, 2, ',', '.'); ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <?php } else { ?>
+            <div class="alert alert-warning my-5" role="alert">
+                Data belum dibuat..!
+            </div>
+            <?php } ?>
             </div>
         </div>
-    <?php } ?>
-</div>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
 </html>
 
